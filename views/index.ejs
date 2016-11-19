@@ -144,7 +144,7 @@
 <body>
 	<div class="htmleaf-container">
 		<header class="htmleaf-header">
-			<h1>请使用原创账号登录 <span></span></h1>
+			<h1>请使用个人正确信息登录 <span></span></h1>
 			<div class="htmleaf-links">
 				<a class="htmleaf-icon icon-htmleaf-home-outline" href="home" title="cf-website" target="_blank"><span> 主页</span></a>
 				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="goany" title="不知道去哪" target="_blank"><span> 不知道去哪</span></a>
@@ -156,12 +156,20 @@
 		                <div class="col-md-offset-3 col-md-6">
 		                    <form class="form-horizontal" action="login" method="post">
 		                        <span class="heading">输入个人信息</span>
+								<div class="form-group">
+									<select name="times" id="times" class="form-control">
+										<option value="第一次作业">第一次作业</option>
+										<option value="第二次作业" selected>第二次作业</option>
+										<option value="编程作业">编程作业</option>
+									</select>
+									<i class="fa fa-task"></i>
+								</div>
 		                        <div class="form-group">
-		                            <input type="number" class="form-control" id="inputEmail3" placeholder="姓名" name="stuName">
+		                            <input type="number" class="form-control"  placeholder="姓名" name="stuName">
 		                            <i class="fa fa-user"></i>
 		                        </div>
 								<div class="form-group">
-									<input type="number" class="form-control" id="inputEmail3" placeholder="学号" name="stuId">
+									<input type="number" class="form-control" id="inputEmail4" placeholder="学号" name="stuId">
 									<i class="fa fa-user"></i>
 								</div>
 
@@ -185,6 +193,15 @@
 		    </div>
 
 	</div>
-	
+	<script>
+		window.onload = function () {
+			var msg = '<%= errorMsg%>';
+			if(msg != 'null' && msg != null && msg != ''){
+				alert(msg);
+			}
+		}
+
+
+	</script>
 </body>
 </html>

@@ -1,31 +1,45 @@
 
 //var trylogin = require('../util/tryToLogin');
 var uploadController = require('../util/uploadController');
-
+var fs = require('fs');
 
 module.exports = function (app) {
 
+  var $times;
   var $stuName;
   var $stuId;
   /* GET home page. */
   app.get('/', function(req, res, next) {
-    res.render('index');
+    res.render('index',{errorMsg : "null"});
+  });
+
+  app.get('/login',function (req,res,next) {
+    res.render('index',{errorMsg : 'null'});
   });
 
   app.post('/login',function (req,res,next) {
+    $times = req.body.times;
     $stuName = req.body.stuName;
     $stuId = req.body.stuId;
     var $pass = req.body.pass;
 
+    if($pass == "bianyiyuanli"){
 
+      var $path = './public/uploads/'+$times+'/'+$stuName+'-'+$stuId;
 
-    res.render('upload',{
-      stuName : $stuName,
-      stuId : $stuId
-    });
+      if (!fs.existsSync($path)) {
+        fs.mkdirSync($path);
+      }
 
+      res.render('upload',{
+        stuName : $stuName,
+        stuId : $stuId,
+        times : $times
+      });
 
-
+    }else {
+      res.render('index',{errorMsg : "通行证输入错误"});
+    }
   });
 
   app.post('/upload',uploadController.dataInput);
@@ -41,24 +55,8 @@ module.exports = function (app) {
     res.end();
   });
 
-  app.get('/goany',function (req,res,next) {
-    var url = [
-      'http://www.baidu.com',
-      'http://www.improvecfan.cn',
-      'http://blog.improvecfan.cn',
-      'https://github.com',
-      'https://github.com/CleverFan',
-      'http://blog.csdn.net/qq_31655965',
-      'https://www.google.com.hk/?gws_rd=ssl',
-      'http://www.htmleaf.com/',
-      'https://www.zhihu.com',
-      'http://www.runoob.com/nodejs/nodejs-tutorial.html'
-    ]
-    var randomNum = parseInt(10*Math.random());
-    res.writeHead(302,{
-      'Location': url[randomNum]
-    });
-    res.end();
+  app.get('/check',function (req,res,next) {
+    res.render('check');
   });
 
 }
