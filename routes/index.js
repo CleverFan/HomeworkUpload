@@ -15,7 +15,9 @@ module.exports = function (app) {
   app.post('/login',function (req,res,next) {
     $stuName = req.body.stuName;
     $stuId = req.body.stuId;
-    $pass = req.body.pass;
+    var $pass = req.body.pass;
+
+
 
     res.render('upload',{
       stuName : $stuName,
