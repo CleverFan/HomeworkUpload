@@ -26,6 +26,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h3>基本演示（支持jpg、gif、txt、png、zip和pdf格式文件）</h3>
+
 					<input type="file" multiple id="ssi-upload"/>
 				</div>
 			</div>
@@ -37,7 +38,22 @@
 	<script>window.jQuery || document.write('<script src="/javascripts/jquery-2.1.1.min.js"><\/script>')</script>
 	<script src="/javascripts/ssi-uploader.js"></script>
 	<script type="text/javascript">
-		$('#ssi-upload').ssi_uploader({url:'upload',maxFileSize:6,allowed:['jpg','gif','txt','png','pdf','zip']});
+		$('#ssi-upload').ssi_uploader({
+			url:'upload?stuName=<%= stuName%>&stuId=<%= stuId%>',
+			<!--data: {-->
+				<!--"stuName":"<%= stuName%>"-->
+			<!--},-->
+			<!--ajaxOptions : {-->
+				<!--data : {-->
+					<!--"stuName":"<%= stuName%>"-->
+				<!--}-->
+			<!--},-->
+			maxFileSize:6,
+			allowed:['jpg','gif','txt','png','pdf','zip'],
+//			onUpload:function(){
+//				console.log('文件上传完毕！');
+//			}
+		});
 	</script>
 </body>
 </html>

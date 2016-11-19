@@ -2,15 +2,26 @@
  * Created by chengfan on 2016/11/17.
  */
 var  multer=require('multer');
+var fs = require('fs');
 var storage = multer.diskStorage({
     //设置上传后文件路径，uploads文件夹会自动创建。
     destination: function (req, file, cb) {
-        cb(null, './public/uploads')
+        var $path = './public/uploads/'+req.query.stuName;
+        console.log("upload ing");
+        fs.exists($path,function (exists) {
+            if(!exists){
+                fs.mkdir($path);
+            }
+            cb(null, $path)
+        })
     },
     //给上传文件重命名，获取添加后缀名
     filename: function (req, file, cb) {
+        console.log("2")
         var fileFormat = (file.originalname).split(".");
-        cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
+        //cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
+        cb(null, fileFormat[0] + "." + fileFormat[fileFormat.length - 1]);
+        console.log("upload ok")
     }
 });
 //添加配置文件到muler对象。
