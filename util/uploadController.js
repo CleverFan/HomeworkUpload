@@ -16,6 +16,6 @@ exports.dataInput = function (req, res) {
         //文件信息在req.file或者req.files中显示。
         console.log(req.files);
         sendemail("上传作业成功！",req.query.stuEmail);
-        sendemail("有人交作业了！",'1290694278@qq.com');
+        sendemail(req.query.stuName+"刚刚交作业了！",'1290694278@qq.com');
     });
 }
