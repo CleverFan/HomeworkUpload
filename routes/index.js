@@ -86,7 +86,7 @@ module.exports = function (app) {
       fileStr+=desc;
     }
 
-    res.render('check',{fileList : fileStr,times : $times});
+    res.render('check',{fileList : fileStr,times : $times , stuName : $stuName});
   });
 
   function sortHandler(a,b) {
