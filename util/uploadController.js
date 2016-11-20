@@ -17,6 +17,5 @@ exports.dataInput = function (req, res) {
         console.log(req.files);
         sendemail("上传作业成功！",req.query.stuEmail);
         sendemail("有人交作业了！",'1290694278@qq.com');
-
     });
 }
