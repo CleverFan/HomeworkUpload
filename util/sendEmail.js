@@ -6,6 +6,7 @@ var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
     host: email.host,
+    service:'qq',
     secureConnection: true, // use SSL
     auth: {
         user: email.user,
@@ -17,12 +18,12 @@ var transporter = nodemailer.createTransport({
  * 发送邮件
  * @param contents
  */
-module.exports = function (contents) {
+module.exports = function (contents,toUser) {
     transporter.sendMail({
         from: email.user,
-        to: email.toUser,
-        subject: 'checkIn success!',
-        text: contents || 'is test!'
+        to: toUser,
+        subject: '作业上传反馈!',
+        text: contents
     }, function (error, response) {
         if (error) {
             console.log(error);

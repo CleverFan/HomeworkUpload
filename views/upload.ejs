@@ -30,11 +30,8 @@
 
 					<input type="file" multiple id="ssi-upload"/>
 				</div>
-
 			</div>
-
 		</div>
-
 	</div>
 
 	<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
@@ -42,15 +39,7 @@
 	<script src="/javascripts/ssi-uploader.js"></script>
 	<script type="text/javascript">
 		$('#ssi-upload').ssi_uploader({
-			url:'upload?stuName=<%= stuName%>&stuId=<%= stuId%>&times=<%= times%>',
-			<!--data: {-->
-				<!--"stuName":"<%= stuName%>"-->
-			<!--},-->
-			<!--ajaxOptions : {-->
-				<!--data : {-->
-					<!--"stuName":"<%= stuName%>"-->
-				<!--}-->
-			<!--},-->
+			url:'upload?stuName=<%= stuName%>&stuId=<%= stuId%>&times=<%= times%>&stuEmail=<%= stuEmail%>',
 			maxFileSize:2,
 			allowed:['jpg','gif','txt','png','pdf','zip','docx','doc','rar'],
 			onUpload:function(){
@@ -58,6 +47,21 @@
 				alert('文件上传完毕！');
 			}
 		});
+
+		window.onload = function () {
+			console.log('<%= remember%>');
+			if ('<%= remember%>' != null){
+				window.localStorage.stuName = '<%= stuName%>';
+				window.localStorage.stuId = '<%= stuId%>'
+				window.localStorage.stuEmail = '<%= stuEmail%>'
+				window.localStorage.pass = '<%= pass%>'
+			} else{
+				window.localStorage.removeItem('stuName')
+								.removeItem('stuId')
+								.removeItem('stuEmail')
+								.removeItem('pass');
+			}
+		}
 	</script>
 </body>
 </html>

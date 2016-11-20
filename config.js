@@ -18,7 +18,7 @@ module.exports = {
     "email": {
         "host": '377109151@qq.com',
         "user": '377109151@qq.com',
-        "password": 'cf958181127',
+        "password": 'advwewdgkbdabhci',
         "toUser": '1290694278@qq.com'
     }
 };
