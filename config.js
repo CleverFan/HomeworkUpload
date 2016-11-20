@@ -7,10 +7,6 @@ module.exports = {
         {
             "user": 201426810303,
             "password": 950818
-        },
-        {
-            "user": 201426810303,
-            "password": 950818
         }
     ],
 
