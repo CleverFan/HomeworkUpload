@@ -4,6 +4,10 @@ var uploadController = require('../util/uploadController');
 var fs = require('fs');
 var makedirUtil = require('../util/makeDirUtil');
 
+var fileUtil = require('../util/fileUtil');
+
+//var process = require('../util/process')
+
 module.exports = function (app) {
 
   var $times;
@@ -13,6 +17,9 @@ module.exports = function (app) {
   var $remember;
   /* GET home page. */
   app.get('/', function(req, res, next) {
+    //process.createDir('')
+    //process.openApp();
+    //res.end();
     res.render('index',{errorMsg : "null"});
   });
 
@@ -65,7 +72,28 @@ module.exports = function (app) {
   });
 
   app.get('/check',function (req,res,next) {
-    res.render('check');
+    var filesList = fileUtil('./public/uploads/' + $times+'/' + $stuName + "-" +$stuId);
+
+    filesList.sort(sortHandler);
+
+
+    var fileStr='';
+    for(var i=0;i<filesList.length;i++) {
+      var item = filesList[i];
+      var desc ="文件名"+item.name /*+ " "
+          +"大小:"+(item.size/1024).toFixed(2) +"/kb"+" "
+          +"路径:"+item.path*/;
+      fileStr+=desc;
+    }
+
+    res.render('check',{fileList : fileStr,times : $times});
   });
+
+  function sortHandler(a,b) {
+    if(a.size > b.size)
+      return -1;
+    else if(a.size < b.size) return 1
+    return 0;
+  }
 
 }
