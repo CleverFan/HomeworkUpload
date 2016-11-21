@@ -2,11 +2,12 @@
  * Created by chengfan on 2016/11/17.
  */
 var  multer=require('multer');
+var config = require('../config');
 
 var storage = multer.diskStorage({
-    //设置上传后文件路径，uploads文件夹会自动创建。
+    //设置上传后文件路径，文件夹会自动创建。
     destination: function (req, file, cb) {
-        var $path = './public/uploads/'+req.query.times+'/'+req.query.stuName+'-'+req.query.stuId;
+        var $path = config.uploadPath+req.query.times+'/'+req.query.stuName+'-'+req.query.stuId;
         console.log("upload ing");
 
         cb(null, $path)

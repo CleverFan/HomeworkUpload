@@ -22,7 +22,7 @@ module.exports = function (contents,toUser) {
     transporter.sendMail({
         from: email.user,
         to: toUser,
-        subject: '作业上传反馈!',
+        subject: email.subject,
         text: contents
     }, function (error, response) {
         if (error) {

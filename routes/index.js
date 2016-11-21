@@ -6,7 +6,7 @@ var makedirUtil = require('../util/makeDirUtil');
 
 var fileUtil = require('../util/fileUtil');
 
-//var process = require('../util/process')
+var config = require('../config');
 
 module.exports = function (app) {
 
@@ -36,8 +36,8 @@ module.exports = function (app) {
 
     var $pass = req.body.pass;
 
-    if($pass == "bianyiyuanli"){
-      var $rootPath =  './public/uploads/';
+    if($pass == config.passport){
+      var $rootPath =  config.uploadPath;
       var $path = $rootPath + $times+'/'+$stuName+'-'+$stuId;
 
       if (!fs.existsSync($path)){
@@ -66,13 +66,13 @@ module.exports = function (app) {
 
   app.get('/home',function (req,res,next) {
     res.writeHead(302,{
-      'Location':'http://www.improvecfan.cn'
+      'Location':config.homeUrl
     });
     res.end();
   });
 
   app.get('/check',function (req,res,next) {
-    var filesList = fileUtil('./public/uploads/' + $times+'/' + $stuName + "-" +$stuId);
+    var filesList = fileUtil(config.uploadPath + $times+'/' + $stuName + "-" +$stuId);
 
     filesList.sort(sortHandler);
 
