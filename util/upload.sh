@@ -21,11 +21,12 @@ function ergodic(){
     fi
   done
 
-  mv /node/HomeworkUpload/public/uploads /node/HomeworkUpload/public/uploads-copy
 }
 
 IFS=$'\n' #这个必须要，否则会在文件名中有空格时出错
 ergodic "/node/HomeworkUplode/public/uploads"
+
+mv /node/HomeworkUpload/public/uploads /node/HomeworkUpload/public/uploads-copy
       
  
 exit 0
