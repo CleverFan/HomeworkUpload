@@ -17,7 +17,7 @@ function ergodic(){
       local name=$file      
       #local size=`du --max-depth=1 $path|awk '{print $1}'` 
       #echo $name $path 
-      /plugins/baidu /bpcs_uploader.php upload $path $baidupan_DIR/$path
+      /plugins/baidu/bpcs_uploader.php upload $path $baidupan_DIR/$path
     fi
   done
 }
