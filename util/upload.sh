@@ -20,9 +20,11 @@ function ergodic(){
       /plugins/baidu/bpcs_uploader.php upload $path $baidupan_DIR/$path
     fi
   done
+
+  mv /node/HomeworkUpload/public/uploads /node/HomeworkUpload/public/uploads-copy
 }
 
-IFS=$'\n'                      #这个必须要，否则会在文件名中有空格时出错
+IFS=$'\n' #这个必须要，否则会在文件名中有空格时出错
 ergodic "/node/HomeworkUplode/public/uploads"
       
  
