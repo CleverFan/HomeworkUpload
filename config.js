@@ -10,10 +10,10 @@ module.exports = {
 
     // 邮件账户
     'email': {
-        'host': '377109151@qq.com',
-        'user': '377109151@qq.com',
-        'password': 'advwewdgkbdabhci',
-        //'toUser': '1290694278@qq.com'
+        'host': 'XXXXXXXXX@qq.com',
+        'user': 'XXXXXXXXX@qq.com',
+        'password': 'XXXXXXXXXXXXXXXXXXX',
+        //'toUser': 'XXXXXXXXXX@qq.com'
         'subject' : '作业上传反馈！'
     }
 };

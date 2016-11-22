@@ -16,10 +16,10 @@ function getFileList(path) {
 
 //遍历读取文件
 function readFile(path,filesList) {
-    files = fs.readdirSync(path);//需要用到同步读取
+    var files = fs.readdirSync(path);//需要用到同步读取
     files.forEach(walk);
     function walk(file) {
-        states = fs.statSync(path+'/'+file);
+        var states = fs.statSync(path+'/'+file);
         if(states.isDirectory()) {
             readFile(path+'/'+file,filesList);
         }
@@ -34,33 +34,4 @@ function readFile(path,filesList) {
     }
 }
 
-//写入文件utf-8格式
-// function writeFile(fileName,data)
-// {
-//     fs.writeFile(fileName,data,'utf-8',complete);
-//     function complete()
-//     {
-//         console.log("文件生成成功");
-//     }
-// }
-
-
-
-// module.exports = function (path) {
-//     var filesList = getFileList(path);
-//     filesList.sort(sortHandler);
-//     var str='';
-//     for(var i=0;i<filesList.length;i++) {
-//         var item = filesList[i];
-//         var desc ="文件名:"+item.name + " "
-//             +"大小:"+(item.size/1024).toFixed(2) +"/kb"+" "
-//             +"路径:"+item.path;
-//         str+=desc +"\n"
-//     }
-//     console.log(str)
-//     return str;
-// }
-
 module.exports = getFileList;
-
-//writeFile("test.txt",str);
